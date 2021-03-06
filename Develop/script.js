@@ -1,9 +1,9 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-var passwordUpperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var passwordLowerCase = "abcdefghijklmnopqrstuvwxyz";
-var passwordNumber = "0123456789";
-var specialCharacter ="!@#$%^&*()?<>:{}|~";
+var passwordUppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var passwordLowercase = "abcdefghijklmnopqrstuvwxyz";
+var passwordNumbers = "0123456789";
+var specialCharacters ="!@#$%^&*()?<>:{}|~";
 var finalPassword = " ";
 
 
@@ -15,28 +15,74 @@ function writePassword() {
   passwordText.value = password;
 
 }
+debugger
 
 function generatePassword (){
   var finalPassword="";
   var specialCharacter ="!@#$%^&*()?<>:{}|~"
-  var passlength = prompt("# of characters?, Must be 8 characters minimum")
-    console.log(passlength);
+
+  var passLength = parseInt(prompt("# of characters?, min:8 Max:128")) 
+    console.log(passLength);
+      if (passLength <8){
+        alert("password not long enough")
+        generatePassword()
+      }
+      if (passLength >128){
+        alert("password too long")
+        generatePassword()
+      }
   var wantsUppercase = confirm("Would you like to use uppercase letters?")
     console.log(wantsUppercase);
   var wantsLowercase = confirm("Would you like to use lowercase letters?")
     console.log(wantsLowercase);
   var wantsNumbers = confirm("Would you like to use numbes?")
     console.log(wantsNumbers);
-  var wantsSpecialCharacters = confirm("Would you like to use special characters?")
-    console.log(wantsSpecialCharacters);
+  var wantsspecialCharacters = confirm("Would you like to use special characters?")
+    console.log(wantsspecialCharacters);
+    
 
-  for (let i = 0; i < passlength; i++){
-    var char = Math.floor(Math.random()
+  
+    var PasswordAttributes = {
+      Length: passLength, 
+      Uppercase: wantsUppercase,
+      Lowercase: wantsLowercase,
+      Number: wantsNumbers,
+      specialCharacter: wantsspecialCharacters
+    
+    }
+
+
+
+  if (wantsUppercase = true) {
+    PasswordAttributes.Uppercase = passwordUppercase
+  }
+  if (wantsLowercase = true) {
+    PasswordAttributes.Lowercase = passwordLowercase
+  }
+  if (wantsspecialCharacters = true) {
+    PasswordAttributes.specialCharacter = specialCharacters
+  }
+  if (wantsNumbers = true) {
+    PasswordAttributes.Number = passwordNumbers
+  }
+    
+ 
+  console.log(PasswordAttributes);
+
+
+  function randomizer(){
+  var randomnumber = Math.floor(Math.random()*passLength)
   }
 
-
+  for (let i = 0; i < passLength; i++){
+  } 
+  
   return finalPassword; 
 }
+
+
+
+
 
 
 
